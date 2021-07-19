@@ -1,18 +1,19 @@
 (ns work-tracker.core
-  (:use seesaw.core))
+  (:require [seesaw.core :as seesaw]))
 
-
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
 
 (defn -main [& args]
-  (invoke-later
-    (-> (frame :title "Hello",
-               :content "Hello, Seesaw",
-               :on-close :exit)
-        pack!
-        show!)))
+  (defn display
+    [content]
+    (let [window (seesaw/frame :title "Example")]
+      (-> window
+          (seesaw/config! :content content)
+          (seesaw/pack!)
+          (seesaw/show!))))
+  (def button
+    (seesaw/button
+      :text "Click Me"
+      :listen [:action (fn [event](seesaw/alert "Click!" ))]))
+  (display button))
 
 
