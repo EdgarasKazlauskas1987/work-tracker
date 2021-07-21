@@ -1,14 +1,16 @@
 (ns work-tracker.core
-  (:require [seesaw.core :as seesaw]))
-
-;; ToDo make function to save work record to DB
-(defn save-work [task]
-  (println task))
+  (:require [seesaw.core :as seesaw]
+            [work-tracker.utils :as utils]))
 
 (defn -main [& args]
-  (let [window (seesaw/frame :title "Work Tracker" :width 300 :height 300 :on-close :hide)
-        text-field (seesaw/text :text "Add work" :editable? true :columns 20)
-        button (seesaw/button :text "Click Me" :listen [:action (fn [event](save-work (seesaw/text text-field)))])
+  (utils/create-new-file)
+  (let [window (seesaw/frame :title (str "Work Tracker " (utils/current-time))
+                             :width 900 :height 56 :resizable? false :on-close :hide)
+        text-field (seesaw/text :text (first (utils/read-last-work)) :editable? true :multi-line? false)
+        button (seesaw/button :text "Click Me" :preferred-size [100 :by 30] :listen [:action (fn [event] (utils/save-work
+                                                                                                           (seesaw/text text-field)
+                                                                                                           (utils/current-time)))])
         panel (seesaw/horizontal-panel :items [text-field button])]
-    (seesaw/config! window :content panel)
-    (seesaw/show! window)))
+    (-> window
+        (seesaw/config! :content panel)
+        (seesaw/show!))))
