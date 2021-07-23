@@ -33,12 +33,14 @@
          (.mkdir (File. month-path))
          (. f createNewFile)))))
 
+(defn supported? []
+  (. Desktop isDesktopSupported))
+
 (defn open-file []
-  (when (. Desktop isDesktopSupported)
-    (let [{full-path :full-path} (generate-paths base-path)
-         f (new File full-path)
-         d (. Desktop getDesktop)]
-     (. d edit f))))
+  (let [{full-path :full-path} (generate-paths base-path)
+        f (new File full-path)
+        d (. Desktop getDesktop)]
+    (. d edit f)))
 
 (defn read-work []
   (with-open [reader (io/reader base-path)]
@@ -46,7 +48,7 @@
       (csv/read-csv reader))))
 
 (defn read-last-work []
-  (let [full-path (str base-path "\\" (current-year) "\\" (current-month) "\\" (current-day) ".txt")]
+  (let [{full-path :full-path} (generate-paths base-path)]
    (with-open [reader (io/reader full-path)]
     (last
       (doall

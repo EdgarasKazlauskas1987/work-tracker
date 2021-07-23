@@ -10,7 +10,11 @@
         save-btn (seesaw/button :text "Save" :preferred-size [100 :by 30] :listen [:action (fn [event] (utils/save-work
                                                                                                            (seesaw/text text-field)
                                                                                                            (utils/current-time)))])
-        open-btn (seesaw/button :text "Open" :preferred-size [100 :by 30] :listen [:action (fn [event] (utils/open-file))])
+        open-btn (seesaw/button :text "Open" :preferred-size [100 :by 30] :listen [:action (fn [event] (if (utils/supported?)
+                                                                                                         (utils/open-file)
+                                                                                                         (seesaw/alert "Not supported on this OS"
+                                                                                                                       :title "Error"
+                                                                                                                       :type :error)))])
         panel (seesaw/horizontal-panel :items [text-field save-btn open-btn])]
     (-> window
         (seesaw/config! :content panel)
