@@ -10,9 +10,6 @@
 (defn current-time []
   (.format (SimpleDateFormat. "yyyy-MM-dd HH:mm") (new Date)))
 
-(defn current-date []
-  (.format (SimpleDateFormat. "yyyy-MM-dd") (new Date)))
-
 (defn current-year []
   (.format (SimpleDateFormat. "yyyy") (new Date)))
 
@@ -25,11 +22,12 @@
 (defn create-new-file []
   (let [year-path (str path "\\" (current-year))
         month-path (str path "\\" (current-year) "\\" (current-month))
-        full-path (str path "\\" (current-year) "\\" (current-month) "\\" (current-day) ".txt")]
+        full-path (str path "\\" (current-year) "\\" (current-month) "\\" (current-day) ".txt")
+        f (new File full-path)]
    (when-not (.exists (io/file full-path))
      (do (.mkdir (File. year-path))
          (.mkdir (File. month-path))
-         (spit full-path "testing")))))
+         (. f createNewFile)))))
 
 (defn read-work []
   (with-open [reader (io/reader path)]
