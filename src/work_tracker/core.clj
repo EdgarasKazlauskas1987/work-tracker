@@ -27,6 +27,6 @@
         close-day (seesaw/button :text "Close the Day" :preferred-size [150 :by 30] :listen [:action (fn [event] (System/exit 1))])
         panel (seesaw/horizontal-panel :items [text-field save-btn open-btn close-day])]
     (setup window panel)
-    (chm/chime-at (chm/periodic-seq (Instant/now) (Duration/ofSeconds 20))
+    (chm/chime-at (chm/periodic-seq (Instant/now) (Duration/ofMinutes 30))
                   (fn [_]
                     (setup window panel)))))
