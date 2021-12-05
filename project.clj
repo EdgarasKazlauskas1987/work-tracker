@@ -7,4 +7,5 @@
                  [seesaw "1.5.0"]
                  [org.clojure/data.csv "1.0.0"]
                  [jarohen/chime "0.3.3"]]
+  :main         work-tracker.core
   :repl-options {:init-ns work-tracker.core})

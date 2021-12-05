@@ -1,3 +1,4 @@
+/.idea
 /target
 /classes
 /checkouts
@@ -6,6 +7,7 @@ pom.xml
 pom.xml.asc
 *.jar
 *.class
+*.iml
 /.lein-*
 /.nrepl-port
 .idea/workspace.xml

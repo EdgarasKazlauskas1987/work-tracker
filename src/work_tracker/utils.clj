@@ -18,7 +18,7 @@
 (defn current-day []
   (.format (SimpleDateFormat. "dd") (new Date)))
 
-(def base-path "C:\\Users\\Edgaras\\Desktop\\WorkFolder")
+(def base-path (System/getenv "WORK_FOLDER"))
 
 (defn generate-paths [base-path]
   {:year-path (str base-path "\\" (current-year))
