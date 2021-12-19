@@ -54,8 +54,8 @@
       (doall
        (csv/read-csv reader))))))
 
-(defn save-work [task date]
+(defn save-work [date task]
   (let [{full-path :full-path} (generate-paths base-path)]
     (create-new-file)
    (with-open [writer (io/writer full-path :append true)]
-    (csv/write-csv writer [[task date]] :newline :cr+lf ))))
+    (csv/write-csv writer [[date task]] :newline :cr+lf ))))

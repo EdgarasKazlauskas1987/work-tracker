@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module cursive.leiningen.project.LeiningenProjectsManager.displayName="work-tracker:0.1.0-SNAPSHOT" cursive.leiningen.project.LeiningenProjectsManager.isLeinModule="true" type="JAVA_MODULE" version="4">
+<module cursive.leiningen.project.LeiningenProjectsManager.displayName="work-tracker:0.1.1-SNAPSHOT" cursive.leiningen.project.LeiningenProjectsManager.isLeinModule="true" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/classes" />
@@ -18,11 +18,13 @@
     <orderEntry type="library" name="Leiningen: com.jgoodies/forms:1.2.1" level="project" />
     <orderEntry type="library" name="Leiningen: com.miglayout/miglayout:3.7.4" level="project" />
     <orderEntry type="library" name="Leiningen: j18n:1.0.2" level="project" />
+    <orderEntry type="library" name="Leiningen: jarohen/chime:0.3.3" level="project" />
     <orderEntry type="library" name="Leiningen: nrepl:0.6.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/clojure:1.10.1" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/core.specs.alpha:0.2.44" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/data.csv:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.clojure/spec.alpha:0.2.176" level="project" />
+    <orderEntry type="library" name="Leiningen: org.clojure/tools.logging:1.0.0" level="project" />
     <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-action:1.6.3" level="project" />
     <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-autocomplete:1.6.3" level="project" />
     <orderEntry type="library" name="Leiningen: org.swinglabs.swingx/swingx-common:1.6.3" level="project" />
