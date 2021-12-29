@@ -21,7 +21,8 @@
 (def base-path (System/getenv "WORK_FOLDER"))
 
 (defn generate-paths [base-path]
-  {:year-path (str base-path "\\" (current-year))
+  {:config-path (str base-path "\\config.txt")
+   :year-path (str base-path "\\" (current-year))
    :month-path (str base-path "\\" (current-year) "\\" (current-month))
    :full-path (str base-path "\\" (current-year) "\\" (current-month) "\\" (current-day) ".txt")})
 
@@ -32,6 +33,12 @@
      (do (.mkdir (File. year-path))
          (.mkdir (File. month-path))
          (. f createNewFile)))))
+
+(defn create-config-file []
+  (let [config-path (:config-path (generate-paths base-path))
+        f (new File config-path)]
+    (when-not (.exists (io/file config-path))
+      (. f createNewFile))))
 
 (defn supported? []
   (. Desktop isDesktopSupported))
@@ -59,3 +66,8 @@
     (create-new-file)
    (with-open [writer (io/writer full-path :append true)]
     (csv/write-csv writer [[date task]] :newline :cr+lf ))))
+
+(defn save-time-config [^String min]
+  (let [config-path (:config-path (generate-paths base-path))]
+    (with-open [writer (io/writer config-path)]
+      (.write writer min))))
