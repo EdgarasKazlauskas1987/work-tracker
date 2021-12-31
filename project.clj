@@ -5,6 +5,6 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [seesaw "1.5.0"]
                  [org.clojure/data.csv "1.0.0"]
-                 [jarohen/chime "0.3.3"]]
+                 [puppetlabs/trapperkeeper-scheduler "1.1.3"]]
   :main         work-tracker.core
   :repl-options {:init-ns work-tracker.core})

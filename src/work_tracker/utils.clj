@@ -2,9 +2,14 @@
   (:import (java.text SimpleDateFormat)
            (java.util Date)
            (java.io File)
-           (java.awt Desktop))
+           (java.awt Desktop)
+           (java.util.concurrent TimeUnit))
   (:require [clojure.data.csv :as csv]
             [clojure.java.io :as io]))
+
+(defn min-to-mls [min]
+  (-> (TimeUnit/MILLISECONDS)
+      (.convert min TimeUnit/MINUTES)))
 
 (defn current-time []
   (.format (SimpleDateFormat. "yyyy-MM-dd HH:mm") (new Date)))
