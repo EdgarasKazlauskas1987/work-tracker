@@ -14,11 +14,15 @@ time spend on them during the day.
 * In the text field briefly describe the task you are working on at the moment
 * Click *Save* button to log the task
 * Click *X* button at the top right corner to temporary close the application
-* After 30 minutes the *work-tracker* will pop up again
+* After chosen time (in minutes) the *work-tracker* will pop up again
 * The previously logged task will be visible in the text field, therefore, you can continue using
 it or you can insert a new one
 * If you want to see the file with all logged tasks click *Open* button
 * If you want to stop logging tasks for the day click *Close the Day* button
+
+It is possible to choose an interval (in minutes) for how often Work Tracker will appear. 
+Just insert amount of minutes in the text field and click *Save changes* button. 
+Default interval is 30 minutes.
 
 ## License
 
