@@ -9,6 +9,10 @@
 (def active-window (atom nil))
 (def default-notification-time "30")
 
+(defn enter-pressed? [e]
+  (when (= \newline (.getKeyChar e))
+    (println "Enter pressed")))
+
 (defn setup [window panel]
   (as-> window v
         (seesaw/config! v :content panel)
@@ -20,7 +24,8 @@
   (utils/create-config-file default-notification-time)
   (let [scheduler (trapper/create-scheduler 1)
         window (seesaw/frame :title (str "Work Tracker " (utils/current-time))
-                             :width 700 :height 95 :resizable? false :on-close :hide)
+                             :width 700 :height 95 :resizable? false :on-close :hide
+                             :listen [:key-typed enter-pressed?])
         msg-txt (seesaw/text :text (second (utils/read-last-work)) :editable? true :multi-line? false :size [530 :by 35])
         notification-lbl (seesaw/label :text "Remind in" :size [60 :by 35])
         time-txt (seesaw/text :text (utils/read-time-config) :editable? true :multi-line? false :size [50 :by 35])
