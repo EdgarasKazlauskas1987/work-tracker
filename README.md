@@ -12,8 +12,7 @@ time spend on them during the day.
 
 * Open *.jar* file of *work-tracker*
 * In the text field briefly describe the task you are working on at the moment
-* Click *Save* button to log the task
-* Click *X* button at the top right corner to temporary close the application
+* Click *Save* button or just press *ENTER* to log the task
 * After chosen time (in minutes) the *work-tracker* will pop up again
 * The previously logged task will be visible in the text field, therefore, you can continue using
 it or you can insert a new one
