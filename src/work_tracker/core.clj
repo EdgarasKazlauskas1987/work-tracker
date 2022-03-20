@@ -2,6 +2,7 @@
   (:gen-class)
   (:import (java.awt Color))
   (:require [seesaw.core :as seesaw]
+            [seesaw.keymap :as km]
             [work-tracker.utils :as utils]
             [puppetlabs.trapperkeeper.services.scheduler.scheduler-core :as trapper]))
 
@@ -25,9 +26,11 @@
         notification-lbl (seesaw/label :text "Remind in" :size [60 :by 35])
         time-txt (seesaw/text :text (utils/read-time-config) :editable? true :multi-line? false :size [50 :by 35])
         min-lbl (seesaw/label :text "minutes" :size [60 :by 35])
-        save-btn (seesaw/button :text "Save" :size [140 :by 30] :background (Color. 101, 226, 159) :listen [:action (fn [event] (utils/save-work
-                                                                                                                                  (utils/current-time)
-                                                                                                                                  (seesaw/text msg-txt)))])
+        save-btn (seesaw/button :text "Save" :size [140 :by 30] :background (Color. 101, 226, 159) :listen [:action (fn [event] (do
+                                                                                                                                  (utils/save-work
+                                                                                                                                    (utils/current-time)
+                                                                                                                                    (seesaw/text msg-txt))
+                                                                                                                                  (seesaw.core/hide! window)))])
         open-btn (seesaw/button :text "Open" :size [140 :by 30] :listen [:action (fn [event] (if (utils/supported?)
                                                                                                (utils/open-file)
                                                                                                (seesaw/alert "Not supported on this OS"
@@ -50,6 +53,11 @@
         top-panel (seesaw/horizontal-panel :items [msg-txt notification-lbl time-txt min-lbl])
         bottom-panel (seesaw/horizontal-panel :items [save-btn open-btn close-day-btn save-changes-btn])
         overall-panel (seesaw/vertical-panel :items [top-panel bottom-panel])]
+    (km/map-key window "ENTER" (fn [event] (do
+                                             (utils/save-work
+                                               (utils/current-time)
+                                               (seesaw/text msg-txt))
+                                             (seesaw.core/hide! window))))
     (reset!
       job-id
       (trapper/interval
