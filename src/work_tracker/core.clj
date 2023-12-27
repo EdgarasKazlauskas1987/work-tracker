@@ -46,7 +46,7 @@
                                                                                                                      job-id
                                                                                                                      (trapper/interval
                                                                                                                        scheduler
-                                                                                                                       (utils/min-to-mls (Integer/parseInt (utils/read-time-config)))
+                                                                                                                       (utils/min-to-ms (Integer/parseInt (utils/read-time-config)))
                                                                                                                        (fn [] (seesaw/show! @active-window))
                                                                                                                        "work-tracker")))
                                                                                                                  (seesaw/alert "Please enter numbers only \n Max amount of numbers is 6" :title "Warning" :type :warning))))])
@@ -62,6 +62,6 @@
       job-id
       (trapper/interval
         scheduler
-        (utils/min-to-mls (Integer/parseInt (utils/read-time-config)))
+        (utils/min-to-ms (Integer/parseInt (utils/read-time-config)))
         (fn [] (setup window overall-panel))
         "work-tracker"))))
