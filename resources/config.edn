@@ -1,0 +1,7 @@
+{:save-btn-size         [140 :by 30]
+ :open-btn-size         [140 :by 30]
+ :close-day-btn-size    [250 :by 30]
+ :save-changes-btn-size [170 :by 30]
+ :notification-lbl-size [60 :by 35]
+ :min-lbl-size          [60 :by 35]
+ :msg-txt-size          [530 :by 35]}
