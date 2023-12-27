@@ -7,7 +7,7 @@
   (:require [clojure.data.csv :as csv]
             [clojure.java.io :as io]))
 
-(defn min-to-mls [min]
+(defn min-to-ms [min]
   (.convert (TimeUnit/MILLISECONDS) min TimeUnit/MINUTES))
 
 (defn current-time []
