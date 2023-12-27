@@ -17,7 +17,7 @@
         (reset! active-window v)))
 
 (defn -main []
-  (utils/create-new-file)
+  (utils/create-work-file)
   (utils/create-config-file default-notification-time)
   (let [scheduler (trapper/create-scheduler 1)
         window (seesaw/frame :title (str "Work Tracker " (utils/current-time))

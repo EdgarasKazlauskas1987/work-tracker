@@ -30,13 +30,13 @@
    :month-path  (str base-path "\\" (current-year) "\\" (current-month))
    :full-path   (str base-path "\\" (current-year) "\\" (current-month) "\\" (current-day) ".txt")})
 
-(defn create-new-file []
+(defn create-work-file []
   (let [{:keys [year-path month-path full-path]} (generate-paths base-path)
-        f (new File full-path)]
+        work-file (new File full-path)]
     (when-not (.exists (io/file full-path))
       (.mkdir (File. year-path))
       (.mkdir (File. month-path))
-      (.createNewFile f))))
+      (.createNewFile work-file))))
 
 (defn save-time-config [^String min]
   (let [config-path (:config-path (generate-paths base-path))]
@@ -45,9 +45,9 @@
 
 (defn create-config-file [min]
   (let [config-path (:config-path (generate-paths base-path))
-        f (new File config-path)]
+        config-file (new File config-path)]
     (when-not (.exists (io/file config-path))
-      (.createNewFile f)
+      (.createNewFile config-file)
       (save-time-config min))))
 
 (defn read-time-config []
@@ -71,6 +71,6 @@
 
 (defn save-work [date task]
   (let [{full-path :full-path} (generate-paths base-path)]
-    (create-new-file)
+    (create-work-file)
     (with-open [writer (io/writer full-path :append true)]
       (csv/write-csv writer [[date task]] :newline :cr+lf))))
