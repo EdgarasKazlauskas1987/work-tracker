@@ -16,6 +16,8 @@
         (seesaw/show! v)
         (reset! active-window v)))
 
+;; Random comment
+
 (defn -main []
   (utils/create-work-file)
   (utils/create-config-file default-notification-time)
